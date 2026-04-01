@@ -1,77 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ranji's Portfolio Website</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />  
-        
-        <!-- Update these with your own fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto+Slab:400,700&display=swap" rel="stylesheet"> 
-        
+        <title>Author - Ranji Raj's Portfolio</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
-
     </head>
     <body>
-        <header>
-            <div class="logo">
-                <img src="img/devjane.png" alt="">
+        <header class="header">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html" class="logo__link">
+                            <img src="img/devjane.png" alt="Ranji Raj Logo" class="logo__img">
+                        </a>
+                    </div>
+                    <button class="nav-toggle" aria-label="toggle navigation">
+                        <span class="hamburger"></span>
+                    </button>
+                    <nav class="nav">
+                        <ul class="nav__list">
+                            <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                            <li class="nav__item"><a href="index.html#services" class="nav__link">Skills</a></li>
+                            <li class="nav__item"><a href="index.html#about" class="nav__link">About</a></li>
+                            <li class="nav__item"><a href="index.html#work" class="nav__link">Work</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-            <button class="nav-toggle" aria-label="toggle navigation">
-                <span class="hamburger"></span>
-            </button>
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="index.html#services" class="nav__link">Rated Skills</a></li>
-                    <li class="nav__item"><a href="index.html#about" class="nav__link">About me</a></li>
-                    <li class="nav__item"><a href="index.html#work" class="nav__link">My Achievements</a></li>
-                </ul>
-            </nav>
         </header>
-        
 
-        <section class="intro">
-            <h1 class="section__title section__title--intro">
-                Entitled as an<strong>Author</strong>
-            </h1>
-            <p class="section__subtitle section__subtitle--intro">December, 2017</p>
-            <img src="img/portfolio-03.jpg" alt="" class="intro__img">
+        <section class="portfolio-header portfolio-header--theme3">
+            <div class="container">
+                <div class="portfolio-header__content">
+                    <div class="portfolio-header__text">
+                        <a href="index.html#work" class="portfolio-header__back">← Back to Work</a>
+                        <h1 class="portfolio-header__title">Entitled as an Author</h1>
+                        <p class="portfolio-header__date">December, 2017</p>
+                    </div>
+                    <div class="portfolio-header__image">
+                        <img src="img/portfolio-03.jpg" alt="Author Achievement">
+                    </div>
+                </div>
+            </div>
         </section>
-        
-        <div class="portfolio-item-individual">
-            <i>I grew up reading school books and newspapers a lot at an early age of my life. My parents used to tell me you must understand the gist of the author behind reciting it. Whenever I used to purchase any books for my learning, I always used to wonder what it becomes to be an author to write it and how much effort does it pays to be a supreme power. My new venture as an Author. </i>
-            <p></p>
-            <img src="img/portfolio-subdetails-03.jpg" alt="">
-        </div>
-        
-        
-        <!-- Footer -->
+
+        <section class="portfolio-content">
+            <div class="container">
+                <div class="portfolio-content__main">
+                    <div class="portfolio-text-box portfolio-text-box--theme3">
+                        <h2 class="portfolio-text-box__title">My Writing Journey</h2>
+                        <p class="portfolio-text-box__text">
+                            I grew up reading school books and newspapers at an early age of my life. My parents used to tell me to understand the gist of the author behind reciting it. Whenever I purchased any books for my learning, I always wondered what it becomes to be an author to write it and how much effort does it take to be a supreme power. My new venture as an Author represents my passion for sharing knowledge and inspiring others through the written word.
+                        </p>
+                    </div>
+
+                    <div class="portfolio-images">
+                        <div class="portfolio-images__item portfolio-images__item--full">
+                            <img src="img/portfolio-subdetails-03.jpg" alt="Author Details">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <footer class="footer">
-            <!-- replace with your own email address -->
-            <a href="mailto:ranjiraj4141@gmail.com" class="footer__link">ranjiraj4141@gmail.com</a>
-            <ul class="social-list">
-                <li class="social-list__item">
-                    <a class="social-list__link" href="https://www.youtube.com/c/RanjiRaj18/">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </li>
-                <li class="social-list__item">
-                    <a class="social-list__link" href="https://www.linkedin.com/in/reng99/">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </li>
-                <li class="social-list__item">
-                    <a class="social-list__link" href="https://github.com/ranjiGT">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </li>
-            </ul>
+            <div class="container">
+                <div class="footer__content">
+                    <div class="footer__text">
+                        <p class="footer__tagline">Let's create something amazing together</p>
+                        <a href="mailto:ranjiraj4141@gmail.com" class="footer__email">ranjiraj4141@gmail.com</a>
+                    </div>
+                    <ul class="social-list">
+                        <li class="social-list__item">
+                            <a class="social-list__link" href="https://www.youtube.com/c/RanjiRaj18/" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
+                        <li class="social-list__item">
+                            <a class="social-list__link" href="https://www.linkedin.com/in/reng99/" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="social-list__item">
+                            <a class="social-list__link" href="https://github.com/ranjiGT" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__bottom">
+                    <p>&copy; 2024 Ranji Raj. All rights reserved.</p>
+                </div>
+            </div>
         </footer>
-        
-        
+
         <script src="js/index.js"></script>
-        
     </body>
 </html>
