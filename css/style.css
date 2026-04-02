@@ -1598,3 +1598,138 @@ h3 { font-size: var(--fs-h3); }
         font-size: 1.5rem;
     }
 }
+
+/* ============================================
+   PORTFOLIO FELICITATION SECTION (Theme for item-09)
+   ============================================ */
+
+.portfolio-felicitation {
+    background: #f5f1e8;
+    padding: 4rem 1rem;
+    color: #1a1a1a;
+}
+
+.portfolio-felicitation__wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portfolio-felicitation__title {
+    text-align: center;
+    font-size: 1.75rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    font-weight: 600;
+}
+
+.portfolio-felicitation__heart {
+    font-size: 1.5rem;
+}
+
+.portfolio-felicitation__content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.portfolio-felicitation__quote {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    font-weight: 500;
+}
+
+.portfolio-felicitation__quote p {
+    margin: 0;
+}
+
+.portfolio-felicitation__image {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.portfolio-felicitation__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.portfolio-felicitation__image--main {
+    grid-column: 2;
+}
+
+.portfolio-felicitation__side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.portfolio-felicitation__image--secondary {
+    max-width: 300px;
+}
+
+.portfolio-felicitation__caption {
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 500;
+}
+
+.portfolio-felicitation__footer {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 1.1rem;
+}
+
+.portfolio-felicitation__star {
+    font-size: 1.5rem;
+    color: #f59e0b;
+}
+
+.portfolio-felicitation__date {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .portfolio-felicitation {
+        padding: 2rem 1rem;
+    }
+
+    .portfolio-felicitation__title {
+        font-size: 1.25rem;
+        gap: 1rem;
+    }
+
+    .portfolio-felicitation__content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .portfolio-felicitation__image--main {
+        grid-column: 1;
+    }
+
+    .portfolio-felicitation__quote {
+        font-size: 1rem;
+        order: 2;
+    }
+
+    .portfolio-felicitation__side {
+        order: 3;
+    }
+
+    .portfolio-felicitation__image--secondary {
+        max-width: 100%;
+    }
+}
