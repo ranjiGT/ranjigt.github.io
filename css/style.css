@@ -1696,6 +1696,20 @@ h3 { font-size: var(--fs-h3); }
     z-index: 1;
 }
 
+/* Equal height two-column images */
+.portfolio-images--equal-height {
+    align-items: stretch;
+}
+
+.portfolio-images--equal-height .portfolio-images__item {
+    display: flex;
+    min-height: 500px;
+}
+
+.portfolio-images--equal-height .portfolio-images__item img {
+    flex: 1;
+}
+
 /* ============================================
    PORTFOLIO FELICITATION SECTION (Theme for item-09)
    ============================================ */
