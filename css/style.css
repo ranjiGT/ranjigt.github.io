@@ -1600,6 +1600,103 @@ h3 { font-size: var(--fs-h3); }
 }
 
 /* ============================================
+   PORTFOLIO CONTENT BACKGROUND DESIGNS
+   ============================================ */
+
+/* Theme 1 - Bordered Box Design */
+.portfolio-content--theme1 {
+    background: linear-gradient(135deg, #f5f1e8 0%, #faf7f2 100%);
+    position: relative;
+}
+
+.portfolio-content--theme1 .portfolio-content__main {
+    position: relative;
+}
+
+.portfolio-content--theme1::before {
+    content: '';
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+    height: 80%;
+    border: 3px solid #c17a5c;
+    border-radius: 20px;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/* Theme 2 - Gradient Background */
+.portfolio-content--theme2 {
+    background: linear-gradient(135deg, #e8f4f8 0%, #f0e8f8 100%);
+}
+
+/* Theme 3 - Olive Green (for story sections) */
+.portfolio-content--theme3 {
+    background: linear-gradient(135deg, #6b7a45 0%, #7d8b53 100%);
+    color: #ffffff;
+}
+
+/* Theme 4 - Cream with Pattern */
+.portfolio-content--theme4 {
+    background: #fef9f3;
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-content--theme4::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.portfolio-content--theme4::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -5%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* Theme 5 - Modern Gradient */
+.portfolio-content--theme5 {
+    background: linear-gradient(135deg, #f8f9f6 0%, #f0f1ed 100%);
+}
+
+/* Theme 6 - Pastel Blue */
+.portfolio-content--theme6 {
+    background: linear-gradient(135deg, #e0f2fe 0%, #e0e7ff 100%);
+}
+
+/* Theme 7 - Peachy Warm */
+.portfolio-content--theme7 {
+    background: linear-gradient(135deg, #fed7aa 0%, #fce7f3 100%);
+}
+
+/* Theme 8 - Mint Green */
+.portfolio-content--theme8 {
+    background: linear-gradient(135deg, #d1fae5 0%, #e0f2fe 100%);
+}
+
+/* Add position relative to portfolio-content for pseudo-element stacking */
+.portfolio-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
    PORTFOLIO FELICITATION SECTION (Theme for item-09)
    ============================================ */
 
