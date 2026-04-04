@@ -2275,3 +2275,37 @@ body:not(.is-loading) { animation: pageEntrance 0.6s ease-out both; }
     .hero__parallax-shape { width: 250px; height: 250px; }
     .theme-toggle { margin-left: 0.5rem; }
 }
+
+/* ============================================
+   PORTFOLIO VIDEO EMBED
+   ============================================ */
+.portfolio-video {
+    margin-top: 2.5rem;
+}
+
+.portfolio-video__title {
+    font-family: var(--font-accent);
+    font-size: var(--fs-h3);
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.portfolio-video__wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+}
+
+.portfolio-video__wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+}
