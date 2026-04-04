@@ -6,22 +6,20 @@
         <title>Ranji Raj - Content Creator & Data Scientist</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-        <!-- Modern Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
         <link rel="stylesheet" href="css/style.css">
-
-        <!-- YouTube Data API Configuration -->
         <script>
             window.YOUTUBE_CONFIG = {
                 API_KEY: 'AIzaSyCKFG1-OZKbYzH6uvfzzfiaq7Ift1JGNUU',
                 CHANNEL_ID: 'UCl1Tqc3U-TAOjuh4izHLsUw',
-                CACHE_DURATION: 3600000 // 1 hour in ms
+                CACHE_DURATION: 3600000
             };
         </script>
     </head>
     <body>
+        <!-- Scroll Progress Bar -->
+        <div class="scroll-progress"></div>
+
         <!-- Navigation -->
         <header class="header">
             <div class="container">
@@ -40,14 +38,20 @@
                             <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
                         </ul>
                     </nav>
+                    <button class="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </button>
                 </div>
             </div>
         </header>
+
         <!-- Hero Section -->
         <section class="hero" id="home">
+            <div class="hero__parallax-shape" aria-hidden="true"></div>
             <div class="container">
                 <div class="hero__content">
-                    <div class="hero__text">
+                    <div class="hero__text" data-reveal="fade-up">
                         <span class="hero__label">Welcome to my portfolio</span>
                         <h1 class="hero__title">Hi, I'm <span class="accent-text">Ranji Raj</span></h1>
                         <p class="hero__subtitle">Content Creator & Data Scientist</p>
@@ -57,7 +61,7 @@
                             <a href="#about" class="btn btn--secondary">Learn More</a>
                         </div>
                     </div>
-                    <div class="hero__image">
+                    <div class="hero__image" data-reveal="slide-right">
                         <div class="hero__image-wrapper">
                             <img src="img/dev-jane-01.jpeg" alt="Ranji Raj - Content Creator" class="hero__img">
                         </div>
@@ -69,8 +73,8 @@
         <!-- Skills Section -->
         <section class="skills" id="services">
             <div class="container">
-                <h2 class="section__title">My Expertise</h2>
-                <p class="section__subtitle">What I bring to the table</p>
+                <h2 class="section__title" data-reveal="fade-up">My Expertise</h2>
+                <p class="section__subtitle" data-reveal="fade-up">What I bring to the table</p>
 
                 <div class="skills-grid">
                     <div class="skill-card">
@@ -104,7 +108,7 @@
         <section class="about" id="about">
             <div class="container">
                 <div class="about__content">
-                    <div class="about__text">
+                    <div class="about__text" data-reveal="fade-up">
                         <h2 class="section__title">About Me</h2>
                         <p class="section__subtitle">A curious mind</p>
                         <p class="about__description">
@@ -114,21 +118,21 @@
                             I completed my Master's in Data Science from Otto von Guericke University, Germany in 2022. I'm driven by curiosity, precision, and a deep desire to share knowledge.
                         </p>
                         <div class="about__stats">
-                            <div class="stat">
+                            <div class="stat" data-reveal="scale-in">
                                 <div class="stat__number" id="yt-subscribers" data-count="57000">Loading...</div>
                                 <div class="stat__label">YouTube Subscribers</div>
                             </div>
-                            <div class="stat">
+                            <div class="stat" data-reveal="scale-in">
                                 <div class="stat__number" id="yt-views" data-count="11000000">Loading...</div>
                                 <div class="stat__label">YouTube Views</div>
                             </div>
-                            <div class="stat">
-                                <div class="stat__number">8+</div>
+                            <div class="stat" data-reveal="scale-in">
+                                <div class="stat__number">9+</div>
                                 <div class="stat__label">Portfolio Projects</div>
                             </div>
                         </div>
                     </div>
-                    <div class="about__image">
+                    <div class="about__image" data-reveal="slide-left">
                         <div class="about__image-wrapper">
                             <img src="img/dev-jane-02.jpeg" alt="Ranji Raj" class="about__img">
                         </div>
@@ -137,83 +141,142 @@
             </div>
         </section>
 
+        <!-- Highlights Section -->
+        <section class="highlights" id="highlights">
+            <div class="container">
+                <h2 class="section__title" data-reveal="fade-up">Key Highlights</h2>
+                <p class="section__subtitle" data-reveal="fade-up">Milestones on the journey</p>
+
+                <div class="highlights-grid">
+                    <div class="highlight-card" data-reveal="fade-up">
+                        <div class="highlight-card__icon"><i class="fas fa-medal"></i></div>
+                        <p class="highlight-card__text">"Felicitated by a community of Brazilian society as Best Teacher with an astonishing Bronze medal."</p>
+                        <span class="highlight-card__tag">Teaching Excellence</span>
+                    </div>
+
+                    <div class="highlight-card" data-reveal="fade-up">
+                        <div class="highlight-card__icon"><i class="fab fa-youtube"></i></div>
+                        <p class="highlight-card__text">"57K+ subscribers and 11M+ views — teaching Data Science with passion and clarity."</p>
+                        <span class="highlight-card__tag">Content Creation</span>
+                    </div>
+
+                    <div class="highlight-card" data-reveal="fade-up">
+                        <div class="highlight-card__icon"><i class="fas fa-graduation-cap"></i></div>
+                        <p class="highlight-card__text">"Completed Master's in Data Science from Otto von Guericke University, Germany in 2022."</p>
+                        <span class="highlight-card__tag">Academic Achievement</span>
+                    </div>
+
+                    <div class="highlight-card" data-reveal="fade-up">
+                        <div class="highlight-card__icon"><i class="fas fa-book"></i></div>
+                        <p class="highlight-card__text">"Entitled as an Author — combining research rigor with creative storytelling and knowledge sharing."</p>
+                        <span class="highlight-card__tag">Publication</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Work Section -->
         <section class="work" id="work">
             <div class="container">
-                <h2 class="section__title">Featured Work</h2>
-                <p class="section__subtitle">My achievements and projects</p>
+                <h2 class="section__title" data-reveal="fade-up">Featured Work</h2>
+                <p class="section__subtitle" data-reveal="fade-up">My achievements and projects</p>
+
+                <div class="work__view-toggle">
+                    <button class="view-toggle-btn active" data-view="grid"><i class="fas fa-th"></i> Grid</button>
+                    <button class="view-toggle-btn" data-view="timeline"><i class="fas fa-stream"></i> Timeline</button>
+                </div>
 
                 <div class="portfolio-grid">
-                    <a href="portfolio-item.html" class="portfolio-card">
+                    <a href="portfolio-item.html" class="portfolio-card" data-title="Vibrant Bronze Medal" data-date="2018-04">
                         <div class="portfolio-card__image">
                             <img src="img/portfolio-01.jpg" alt="Portfolio Project 1">
                         </div>
-                        <div class="portfolio-card__overlay"></div>
+                        <div class="portfolio-card__overlay">
+                            <span class="portfolio-card__title">Vibrant Bronze Medal</span>
+                        </div>
                     </a>
 
-                    <a href="portfolio-item-02.html" class="portfolio-card">
+                    <a href="portfolio-item-02.html" class="portfolio-card" data-title="A Valiant Trophy" data-date="2018-09">
                         <div class="portfolio-card__image">
                             <img src="img/portfolio-02.jpg" alt="Portfolio Project 2">
                         </div>
-                        <div class="portfolio-card__overlay"></div>
+                        <div class="portfolio-card__overlay">
+                            <span class="portfolio-card__title">A Valiant Trophy</span>
+                        </div>
                     </a>
 
-                    <a href="portfolio-item-03.html" class="portfolio-card">
+                    <a href="portfolio-item-03.html" class="portfolio-card" data-title="Entitled as an Author" data-date="2017-12">
                         <div class="portfolio-card__image">
                             <img src="img/portfolio-03.jpg" alt="Portfolio Project 3">
                         </div>
-                        <div class="portfolio-card__overlay"></div>
+                        <div class="portfolio-card__overlay">
+                            <span class="portfolio-card__title">Entitled as an Author</span>
+                        </div>
                     </a>
 
-                    <a href="portfolio-item-08.html" class="portfolio-card">
+                    <a href="portfolio-item-08.html" class="portfolio-card" data-title="Golden Feather" data-date="2016-04">
                         <div class="portfolio-card__image">
                             <img src="img/portfolio-08.jpeg" alt="Portfolio Project 8">
                         </div>
-                        <div class="portfolio-card__overlay"></div>
+                        <div class="portfolio-card__overlay">
+                            <span class="portfolio-card__title">Golden Feather</span>
+                        </div>
                     </a>
 
-                    <a href="portfolio-item-04.html" class="portfolio-card">
+                    <a href="portfolio-item-04.html" class="portfolio-card" data-title="Leadership as Mentor" data-date="2018-09">
                         <div class="portfolio-card__image">
                             <img src="img/portfolio-04.jpg" alt="Portfolio Project 4">
                         </div>
-                        <div class="portfolio-card__overlay"></div>
+                        <div class="portfolio-card__overlay">
+                            <span class="portfolio-card__title">Leadership as Mentor</span>
+                        </div>
                     </a>
 
-                    <a href="portfolio-item-05.html" class="portfolio-card">
+                    <a href="portfolio-item-05.html" class="portfolio-card" data-title="First Milestone" data-date="2018-10">
                         <div class="portfolio-card__image">
                             <img src="img/portfolio-05.jpeg" alt="Portfolio Project 5">
                         </div>
-                        <div class="portfolio-card__overlay"></div>
+                        <div class="portfolio-card__overlay">
+                            <span class="portfolio-card__title">First Milestone</span>
+                        </div>
                     </a>
 
-                    <a href="portfolio-item-06.html" class="portfolio-card">
+                    <a href="portfolio-item-06.html" class="portfolio-card" data-title="Visiting Paradise" data-date="2019-10">
                         <div class="portfolio-card__image">
                             <img src="img/portfolio-06.jpg" alt="Portfolio Project 6">
                         </div>
-                        <div class="portfolio-card__overlay"></div>
+                        <div class="portfolio-card__overlay">
+                            <span class="portfolio-card__title">Visiting Paradise</span>
+                        </div>
                     </a>
 
-                    <a href="portfolio-item-07.html" class="portfolio-card">
+                    <a href="portfolio-item-07.html" class="portfolio-card" data-title="By Teachers" data-date="2015-09">
                         <div class="portfolio-card__image">
                             <img src="img/portfolio-07.jpg" alt="Portfolio Project 7">
                         </div>
-                        <div class="portfolio-card__overlay"></div>
+                        <div class="portfolio-card__overlay">
+                            <span class="portfolio-card__title">By Teachers</span>
+                        </div>
                     </a>
 
-                    <a href="portfolio-item-09.html" class="portfolio-card">
+                    <a href="portfolio-item-09.html" class="portfolio-card" data-title="Master Felicitation Day" data-date="2022-11">
                         <div class="portfolio-card__image">
                             <img src="img/portfolio-09.JPEG" alt="Master Felicitation Day">
                         </div>
-                        <div class="portfolio-card__overlay"></div>
+                        <div class="portfolio-card__overlay">
+                            <span class="portfolio-card__title">Master Felicitation Day</span>
+                        </div>
                     </a>
                 </div>
+
+                <div class="portfolio-timeline"></div>
             </div>
         </section>
 
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
-                <div class="footer__content">
+                <div class="footer__content" data-reveal="fade-up">
                     <div class="footer__text">
                         <p class="footer__tagline">Let's create something amazing together</p>
                         <a href="mailto:ranjiraj4141@gmail.com" class="footer__email">ranjiraj4141@gmail.com</a>
@@ -241,6 +304,11 @@
                 </div>
             </div>
         </footer>
+
+        <!-- Back to Top -->
+        <button class="back-to-top" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
 
         <script src="js/index.js"></script>
     </body>
