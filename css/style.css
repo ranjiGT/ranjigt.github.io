@@ -63,6 +63,7 @@ body {
     background: var(--color-light);
     line-height: 1.6;
     overflow-x: hidden;
+    padding-top: 80px;
 }
 
 /* CONTAINER */
@@ -2308,4 +2309,184 @@ body:not(.is-loading) { animation: pageEntrance 0.6s ease-out both; }
     height: 100%;
     border: none;
     border-radius: 12px;
+}
+
+/* ============================================
+   STICKY HEADER
+   ============================================ */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+.header--scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    padding: 0.3rem 0;
+}
+
+[data-theme="dark"] .header--scrolled {
+    background: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header--hidden {
+    transform: translateY(-100%);
+}
+
+/* ============================================
+   CUSTOM CURSOR
+   ============================================ */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    mix-blend-mode: difference;
+}
+
+.custom-cursor--active {
+    width: 40px;
+    height: 40px;
+    background: rgba(var(--color-primary-rgb, 110, 72, 170), 0.15);
+    border-color: var(--color-accent);
+}
+
+/* ============================================
+   GLASSMORPHISM CARDS
+   ============================================ */
+.skill-card,
+.highlight-card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+[data-theme="dark"] .skill-card,
+[data-theme="dark"] .highlight-card {
+    background: rgba(45, 45, 45, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================
+   LAZY LOAD IMAGE TRANSITION
+   ============================================ */
+img[data-src] {
+    filter: blur(10px);
+    transition: filter 0.4s ease;
+}
+
+img.img-loaded {
+    filter: blur(0);
+}
+
+/* ============================================
+   SKIP TO CONTENT (Accessibility)
+   ============================================ */
+.skip-to-content {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0 0 8px 8px;
+    z-index: 10000;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* ============================================
+   IMPROVED FOCUS STATES
+   ============================================ */
+:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+/* ============================================
+   PORTFOLIO PREV/NEXT NAVIGATION
+   ============================================ */
+.portfolio-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.portfolio-nav__prev,
+.portfolio-nav__next {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-nav__prev:hover,
+.portfolio-nav__next:hover {
+    background: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-nav__prev i {
+    transition: transform 0.2s ease;
+}
+
+.portfolio-nav__prev:hover i {
+    transform: translateX(-3px);
+}
+
+.portfolio-nav__next i {
+    transition: transform 0.2s ease;
+}
+
+.portfolio-nav__next:hover i {
+    transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+    .portfolio-nav {
+        padding: 1.5rem 1rem 2rem;
+    }
+    .portfolio-nav__prev,
+    .portfolio-nav__next {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+    .custom-cursor { display: none; }
 }

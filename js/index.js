@@ -12,15 +12,43 @@ window.addEventListener('load', () => {
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelectorAll('.nav__link');
 
-navToggle.addEventListener('click', () => {
-    document.body.classList.toggle('nav-open');
-});
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        document.body.classList.toggle('nav-open');
+    });
+}
 
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         document.body.classList.remove('nav-open');
     });
 });
+
+// ============================================
+// STICKY HEADER WITH SHRINK ON SCROLL
+// ============================================
+function initStickyHeader() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        if (scrollY > 50) {
+            header.classList.add('header--scrolled');
+        } else {
+            header.classList.remove('header--scrolled');
+        }
+        // Hide on scroll down, show on scroll up
+        if (scrollY > lastScroll && scrollY > 300) {
+            header.classList.add('header--hidden');
+        } else {
+            header.classList.remove('header--hidden');
+        }
+        lastScroll = scrollY;
+    }, { passive: true });
+}
+initStickyHeader();
 
 // ============================================
 // DARK/LIGHT MODE TOGGLE
@@ -46,6 +74,33 @@ function initThemeToggle() {
 initThemeToggle();
 
 // ============================================
+// TYPING ANIMATION ON HERO SUBTITLE
+// ============================================
+function initTypingAnimation() {
+    const el = document.querySelector('.hero__subtitle');
+    if (!el) return;
+    const text = el.textContent;
+    el.textContent = '';
+    el.style.borderRight = '2px solid var(--color-primary)';
+    let i = 0;
+
+    function type() {
+        if (i < text.length) {
+            el.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, 60);
+        } else {
+            // Blink cursor then remove
+            setTimeout(() => { el.style.borderRight = 'none'; }, 2000);
+        }
+    }
+
+    // Start after page load animation
+    setTimeout(type, 800);
+}
+initTypingAnimation();
+
+// ============================================
 // SCROLL-REVEAL ANIMATIONS (Enhanced)
 // ============================================
 const observerOptions = {
@@ -58,8 +113,6 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             const delay = index * 100;
             entry.target.style.animationDelay = `${delay}ms`;
-
-            // Check for data-reveal attribute for variety
             const revealType = entry.target.getAttribute('data-reveal');
             if (revealType) {
                 entry.target.classList.add('reveal-' + revealType);
@@ -71,7 +124,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe skill cards and portfolio cards (existing)
 document.querySelectorAll('.skill-card').forEach(card => {
     card.style.opacity = '0';
     observer.observe(card);
@@ -82,7 +134,6 @@ document.querySelectorAll('.portfolio-card').forEach(card => {
     observer.observe(card);
 });
 
-// Observe data-reveal elements (new)
 document.querySelectorAll('[data-reveal]').forEach(el => {
     el.style.opacity = '0';
     observer.observe(el);
@@ -112,7 +163,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================
-// PARALLAX EFFECT (Fixed)
+// PARALLAX EFFECT
 // ============================================
 function initParallax() {
     const shape = document.querySelector('.hero__parallax-shape');
@@ -138,7 +189,29 @@ if (window.innerWidth > 768) {
 }
 
 // ============================================
-// COUNTER ANIMATION
+// CUSTOM CURSOR (Desktop only)
+// ============================================
+function initCustomCursor() {
+    if (window.innerWidth <= 768) return;
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    // Enlarge on interactive elements
+    document.querySelectorAll('a, button, .portfolio-card, .skill-card, .highlight-card, img[style*="cursor"]').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('custom-cursor--active'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('custom-cursor--active'));
+    });
+}
+initCustomCursor();
+
+// ============================================
+// COUNTER ANIMATION (with formatting)
 // ============================================
 const animateCounters = () => {
     const counters = document.querySelectorAll('[data-count]');
@@ -151,10 +224,10 @@ const animateCounters = () => {
         const updateCounter = () => {
             current += increment;
             if (current < target) {
-                counter.textContent = Math.floor(current);
+                counter.textContent = Math.floor(current).toLocaleString();
                 setTimeout(updateCounter, 50);
             } else {
-                counter.textContent = target;
+                counter.textContent = target.toLocaleString();
             }
         };
 
@@ -176,6 +249,31 @@ document.querySelectorAll('.portfolio-images__item img').forEach((img, index) =>
     img.style.animationDelay = `${index * 150}ms`;
     img.classList.add('fade-in');
 });
+
+// ============================================
+// LAZY LOADING IMAGES
+// ============================================
+function initLazyLoading() {
+    const images = document.querySelectorAll('img[data-src]');
+    if (!images.length) return;
+
+    const imgObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                img.addEventListener('load', () => {
+                    img.classList.add('img-loaded');
+                });
+                imgObserver.unobserve(img);
+            }
+        });
+    }, { rootMargin: '200px' });
+
+    images.forEach(img => imgObserver.observe(img));
+}
+initLazyLoading();
 
 // ============================================
 // BUTTON HOVER EFFECTS
@@ -259,6 +357,35 @@ function initLightbox() {
     });
 }
 initLightbox();
+
+// ============================================
+// PORTFOLIO PAGE SWIPE NAVIGATION (Mobile)
+// ============================================
+function initSwipeNavigation() {
+    const prevLink = document.querySelector('.portfolio-nav__prev');
+    const nextLink = document.querySelector('.portfolio-nav__next');
+    if (!prevLink && !nextLink) return;
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 80) {
+            if (diff > 0 && nextLink) {
+                window.location.href = nextLink.href;
+            } else if (diff < 0 && prevLink) {
+                window.location.href = prevLink.href;
+            }
+        }
+    }, { passive: true });
+}
+initSwipeNavigation();
 
 // ============================================
 // TIMELINE / GRID VIEW TOGGLE
