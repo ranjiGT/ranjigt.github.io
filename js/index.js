@@ -4,6 +4,14 @@
 document.body.classList.add('is-loading');
 window.addEventListener('load', () => {
     document.body.classList.remove('is-loading');
+    // Hide preloader
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+            setTimeout(() => preloader.remove(), 500);
+        }, 400);
+    }
 });
 
 // ============================================
@@ -553,3 +561,112 @@ if (document.readyState === 'loading') {
 } else {
     fetchYouTubeStats();
 }
+
+// ============================================
+// 3D TILT EFFECT ON PORTFOLIO CARDS
+// ============================================
+function initTiltEffect() {
+    if (window.innerWidth <= 768) return;
+    const cards = document.querySelectorAll('.portfolio-card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -8;
+            const rotateY = ((x - centerX) / centerX) * 8;
+            card.classList.add('tilt-active');
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.classList.remove('tilt-active');
+            card.style.transform = '';
+        });
+    });
+}
+initTiltEffect();
+
+// ============================================
+// FLOATING DECORATIVE SHAPES
+// ============================================
+function initFloatingShapes() {
+    const sections = document.querySelectorAll('.hero, .work, .highlights');
+    sections.forEach(section => {
+        if (section.querySelector('.floating-shapes')) return;
+        const container = document.createElement('div');
+        container.className = 'floating-shapes';
+        container.setAttribute('aria-hidden', 'true');
+        for (let i = 1; i <= 4; i++) {
+            const shape = document.createElement('div');
+            shape.className = `floating-shape floating-shape--${i}`;
+            container.appendChild(shape);
+        }
+        section.style.position = 'relative';
+        section.prepend(container);
+    });
+}
+initFloatingShapes();
+
+// ============================================
+// STAGGERED CARD ANIMATIONS
+// ============================================
+function initStaggeredAnimations() {
+    const groups = [
+        '.portfolio-grid .portfolio-card',
+        '.skills-grid .skill-card',
+        '.highlights-grid .highlight-card'
+    ];
+
+    groups.forEach(selector => {
+        const items = document.querySelectorAll(selector);
+        if (!items.length) return;
+        items.forEach(item => {
+            item.classList.add('stagger-reveal');
+            item.style.opacity = '0';
+        });
+
+        const staggerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const parent = entry.target.parentElement;
+                    const siblings = parent.querySelectorAll('.stagger-reveal:not(.stagger-visible)');
+                    siblings.forEach((el, i) => {
+                        setTimeout(() => {
+                            el.classList.add('stagger-visible');
+                        }, i * 120);
+                    });
+                    staggerObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        if (items[0]) staggerObserver.observe(items[0]);
+    });
+}
+initStaggeredAnimations();
+
+// ============================================
+// TEXT REVEAL ON SCROLL
+// ============================================
+function initTextReveal() {
+    const elements = document.querySelectorAll('.section__title, .section__subtitle');
+    elements.forEach(el => {
+        el.classList.add('text-reveal');
+        const text = el.textContent;
+        el.innerHTML = `<span class="text-reveal__line">${text}</span>`;
+    });
+
+    const textObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                textObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.text-reveal').forEach(el => textObserver.observe(el));
+}
+initTextReveal();
