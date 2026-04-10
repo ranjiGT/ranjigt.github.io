@@ -2904,3 +2904,415 @@ button:focus-visible {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* ============================================
+   PARTICLE CANVAS HERO BACKGROUND
+   ============================================ */
+.hero__particles {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ============================================
+   SMOOTH PAGE TRANSITIONS
+   ============================================ */
+.page-transition {
+    position: fixed;
+    inset: 0;
+    z-index: 99998;
+    pointer-events: none;
+}
+
+.page-transition__overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.page-transition--entering .page-transition__overlay {
+    animation: pageTransIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.page-transition--leaving .page-transition__overlay {
+    animation: pageTransOut 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes pageTransIn {
+    from { transform: scaleX(0); transform-origin: right; }
+    to   { transform: scaleX(1); transform-origin: right; }
+}
+
+@keyframes pageTransOut {
+    from { transform: scaleX(1); transform-origin: left; }
+    to   { transform: scaleX(0); transform-origin: left; }
+}
+
+/* ============================================
+   ANIMATED SKILL PROGRESS RINGS
+   ============================================ */
+.skill-rings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.skill-ring {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.skill-ring__svg {
+    width: 90px;
+    height: 90px;
+    transform: rotate(-90deg);
+}
+
+.skill-ring__bg {
+    fill: none;
+    stroke: var(--color-border);
+    stroke-width: 6;
+}
+
+.skill-ring__fill {
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 226;
+    stroke-dashoffset: 226;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-ring.animated .skill-ring__fill {
+    stroke-dashoffset: var(--ring-offset);
+}
+
+.skill-ring__label {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--color-text);
+    text-align: center;
+}
+
+.skill-ring__percent {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    fill: var(--color-primary);
+    transform: rotate(90deg);
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+/* ============================================
+   MARQUEE TECH TICKER
+   ============================================ */
+.tech-ticker {
+    overflow: hidden;
+    padding: 1.5rem 0;
+    position: relative;
+    background: linear-gradient(90deg, rgba(99,102,241,0.03) 0%, rgba(16,185,129,0.03) 100%);
+}
+
+.tech-ticker::before,
+.tech-ticker::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.tech-ticker::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--color-light), transparent);
+}
+
+.tech-ticker::after {
+    right: 0;
+    background: linear-gradient(90deg, transparent, var(--color-light));
+}
+
+[data-theme="dark"] .tech-ticker::before {
+    background: linear-gradient(90deg, #0f172a, transparent);
+}
+
+[data-theme="dark"] .tech-ticker::after {
+    background: linear-gradient(90deg, transparent, #0f172a);
+}
+
+.tech-ticker__track {
+    display: flex;
+    gap: 3rem;
+    animation: tickerScroll 30s linear infinite;
+    width: max-content;
+}
+
+.tech-ticker__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    background: white;
+    border-radius: 50px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--color-text);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+[data-theme="dark"] .tech-ticker__item {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+.tech-ticker__item i {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+}
+
+@keyframes tickerScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+.tech-ticker:hover .tech-ticker__track {
+    animation-play-state: paused;
+}
+
+/* ============================================
+   MAGNETIC BUTTONS
+   ============================================ */
+.btn.magnetic {
+    transition: transform 0.2s ease;
+}
+
+/* ============================================
+   MOUSE SPARKLE TRAIL
+   ============================================ */
+.sparkle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    animation: sparkleFade 0.6s ease-out forwards;
+}
+
+@keyframes sparkleFade {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) translateY(-15px);
+    }
+}
+
+/* ============================================
+   MORPHING BLOB BACKGROUND
+   ============================================ */
+.morphing-blob {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.morphing-blob svg {
+    width: 100%;
+    height: 100%;
+}
+
+.morphing-blob--1 {
+    top: 10%;
+    right: -5%;
+}
+
+.morphing-blob--2 {
+    bottom: -10%;
+    left: -5%;
+}
+
+.morphing-blob svg path {
+    fill: var(--color-primary);
+}
+
+/* ============================================
+   SCROLL-DRIVEN HORIZONTAL GALLERY
+   ============================================ */
+.horizontal-gallery {
+    position: relative;
+    overflow: hidden;
+    padding: 3rem 0;
+}
+
+.horizontal-gallery__track {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.1s linear;
+    padding: 0 2rem;
+}
+
+.horizontal-gallery__item {
+    flex-shrink: 0;
+    width: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.horizontal-gallery__item:hover {
+    transform: scale(1.03);
+    box-shadow: var(--shadow-xl);
+}
+
+.horizontal-gallery__item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.horizontal-gallery__item-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: white;
+    font-family: var(--font-accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.horizontal-gallery__hint {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: var(--fs-small);
+    color: var(--color-text-light);
+}
+
+@media (max-width: 768px) {
+    .horizontal-gallery__item { width: 240px; }
+    .horizontal-gallery__item img { height: 240px; }
+    .morphing-blob { width: 200px; height: 200px; }
+    .skill-rings { gap: 1rem; }
+    .skill-ring__svg { width: 70px; height: 70px; }
+}
+
+/* ============================================
+   DYNAMIC COLOR THEME PICKER
+   ============================================ */
+.theme-picker {
+    position: fixed;
+    bottom: 6rem;
+    right: 2rem;
+    z-index: 95;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition);
+}
+
+.theme-picker.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.theme-picker__btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 3px solid white;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s ease;
+}
+
+.theme-picker__btn:hover {
+    transform: scale(1.2);
+}
+
+.theme-picker__btn.active {
+    box-shadow: 0 0 0 3px var(--color-primary), var(--shadow-md);
+}
+
+.theme-picker__toggle {
+    position: fixed;
+    bottom: 6rem;
+    right: 2rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--gradient-accent);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    z-index: 96;
+    transition: var(--transition);
+}
+
+.theme-picker__toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-picker.visible ~ .theme-picker__toggle {
+    bottom: calc(6rem + 180px);
+}
+
+/* ============================================
+   ANIMATED SVG LOGO
+   ============================================ */
+.logo__svg-anim {
+    position: absolute;
+    inset: -4px;
+    pointer-events: none;
+}
+
+.logo__svg-anim circle {
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 2;
+    stroke-dasharray: 160;
+    stroke-dashoffset: 160;
+    animation: logoDrawCircle 1.5s ease-out 0.5s forwards;
+}
+
+@keyframes logoDrawCircle {
+    to { stroke-dashoffset: 0; }
+}
+
+.logo {
+    position: relative;
+}

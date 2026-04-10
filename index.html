@@ -17,6 +17,11 @@
         </script>
     </head>
     <body>
+        <!-- Page Transition Overlay -->
+        <div class="page-transition" aria-hidden="true">
+            <div class="page-transition__overlay"></div>
+        </div>
+
         <!-- Preloader -->
         <div class="preloader">
             <div class="preloader__spinner"></div>
@@ -57,7 +62,14 @@
 
         <!-- Hero Section -->
         <section class="hero" id="home">
+            <canvas class="hero__particles" aria-hidden="true"></canvas>
             <div class="hero__parallax-shape" aria-hidden="true"></div>
+            <!-- Morphing Blobs -->
+            <div class="morphing-blob morphing-blob--1" aria-hidden="true">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M44.5,-76.3C57.3,-69.6,67.1,-57.2,74.6,-43.4C82.1,-29.7,87.3,-14.8,87.2,-0.1C87,14.7,81.5,29.3,73.2,42.1C64.9,54.9,53.9,65.8,40.8,73.2C27.7,80.6,12.5,84.5,-1.5,87C-15.5,89.5,-31,90.6,-44.2,84.1C-57.4,77.6,-68.3,63.5,-75.5,48.3C-82.7,33.1,-86.2,16.6,-85.8,0.2C-85.4,-16.1,-81,-32.2,-72.6,-45.6C-64.2,-59,-51.8,-69.7,-38.1,-75.8C-24.4,-81.9,-9.5,-83.4,3.6,-89.6C16.7,-95.8,31.7,-83,44.5,-76.3Z" transform="translate(100 100)" />
+                </svg>
+            </div>
             <div class="container">
                 <div class="hero__content">
                     <div class="hero__text" data-reveal="fade-up">
@@ -117,11 +129,83 @@
                         <p class="skill-card__text">Teaching is my passion. I help others deeply understand complex topics and am eager to explore technical and critical aspects of what I learn.</p>
                     </div>
                 </div>
+
+                <!-- Skill Progress Rings -->
+                <div class="skill-rings" data-reveal="fade-up">
+                    <div class="skill-ring" style="--ring-offset: 45">
+                        <svg class="skill-ring__svg" viewBox="0 0 80 80">
+                            <circle class="skill-ring__bg" cx="40" cy="40" r="36"/>
+                            <circle class="skill-ring__fill" cx="40" cy="40" r="36"/>
+                            <text class="skill-ring__percent" x="40" y="40">80%</text>
+                        </svg>
+                        <span class="skill-ring__label">Python</span>
+                    </div>
+                    <div class="skill-ring" style="--ring-offset: 68">
+                        <svg class="skill-ring__svg" viewBox="0 0 80 80">
+                            <circle class="skill-ring__bg" cx="40" cy="40" r="36"/>
+                            <circle class="skill-ring__fill" cx="40" cy="40" r="36"/>
+                            <text class="skill-ring__percent" x="40" y="40">70%</text>
+                        </svg>
+                        <span class="skill-ring__label">R</span>
+                    </div>
+                    <div class="skill-ring" style="--ring-offset: 90">
+                        <svg class="skill-ring__svg" viewBox="0 0 80 80">
+                            <circle class="skill-ring__bg" cx="40" cy="40" r="36"/>
+                            <circle class="skill-ring__fill" cx="40" cy="40" r="36"/>
+                            <text class="skill-ring__percent" x="40" y="40">60%</text>
+                        </svg>
+                        <span class="skill-ring__label">LaTeX</span>
+                    </div>
+                    <div class="skill-ring" style="--ring-offset: 57">
+                        <svg class="skill-ring__svg" viewBox="0 0 80 80">
+                            <circle class="skill-ring__bg" cx="40" cy="40" r="36"/>
+                            <circle class="skill-ring__fill" cx="40" cy="40" r="36"/>
+                            <text class="skill-ring__percent" x="40" y="40">75%</text>
+                        </svg>
+                        <span class="skill-ring__label">Data Viz</span>
+                    </div>
+                    <div class="skill-ring" style="--ring-offset: 34">
+                        <svg class="skill-ring__svg" viewBox="0 0 80 80">
+                            <circle class="skill-ring__bg" cx="40" cy="40" r="36"/>
+                            <circle class="skill-ring__fill" cx="40" cy="40" r="36"/>
+                            <text class="skill-ring__percent" x="40" y="40">85%</text>
+                        </svg>
+                        <span class="skill-ring__label">Content</span>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Wave Divider -->
-        <div class="section-divider section-divider--flip" aria-hidden="true">
+        <!-- Tech Ticker -->
+        <div class="tech-ticker" aria-hidden="true">
+            <div class="tech-ticker__track">
+                <span class="tech-ticker__item"><i class="fab fa-python"></i> Python</span>
+                <span class="tech-ticker__item"><i class="fas fa-chart-bar"></i> R</span>
+                <span class="tech-ticker__item"><i class="fab fa-html5"></i> HTML/CSS</span>
+                <span class="tech-ticker__item"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="tech-ticker__item"><i class="fas fa-file-alt"></i> LaTeX</span>
+                <span class="tech-ticker__item"><i class="fas fa-database"></i> SQL</span>
+                <span class="tech-ticker__item"><i class="fab fa-docker"></i> Docker</span>
+                <span class="tech-ticker__item"><i class="fab fa-git-alt"></i> Git</span>
+                <span class="tech-ticker__item"><i class="fas fa-cloud"></i> Azure</span>
+                <span class="tech-ticker__item"><i class="fas fa-brain"></i> Machine Learning</span>
+                <span class="tech-ticker__item"><i class="fas fa-video"></i> Video Editing</span>
+                <span class="tech-ticker__item"><i class="fab fa-youtube"></i> YouTube</span>
+                <!-- Duplicate for seamless loop -->
+                <span class="tech-ticker__item"><i class="fab fa-python"></i> Python</span>
+                <span class="tech-ticker__item"><i class="fas fa-chart-bar"></i> R</span>
+                <span class="tech-ticker__item"><i class="fab fa-html5"></i> HTML/CSS</span>
+                <span class="tech-ticker__item"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="tech-ticker__item"><i class="fas fa-file-alt"></i> LaTeX</span>
+                <span class="tech-ticker__item"><i class="fas fa-database"></i> SQL</span>
+                <span class="tech-ticker__item"><i class="fab fa-docker"></i> Docker</span>
+                <span class="tech-ticker__item"><i class="fab fa-git-alt"></i> Git</span>
+                <span class="tech-ticker__item"><i class="fas fa-cloud"></i> Azure</span>
+                <span class="tech-ticker__item"><i class="fas fa-brain"></i> Machine Learning</span>
+                <span class="tech-ticker__item"><i class="fas fa-video"></i> Video Editing</span>
+                <span class="tech-ticker__item"><i class="fab fa-youtube"></i> YouTube</span>
+            </div>
+        </div>
             <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
                 <path d="M0,40 C200,10 400,70 600,40 C800,10 1000,70 1200,40 L1200,80 L0,80 Z" fill="white"/>
             </svg>
@@ -296,6 +380,22 @@
             </div>
         </section>
 
+        <!-- Horizontal Scroll Gallery -->
+        <div class="horizontal-gallery">
+            <div class="horizontal-gallery__track">
+                <div class="horizontal-gallery__item"><img src="img/portfolio-01.jpg" alt="Bronze Medal"><span class="horizontal-gallery__item-title">Vibrant Bronze Medal</span></div>
+                <div class="horizontal-gallery__item"><img src="img/portfolio-02.jpg" alt="Valiant Trophy"><span class="horizontal-gallery__item-title">A Valiant Trophy</span></div>
+                <div class="horizontal-gallery__item"><img src="img/portfolio-03.jpg" alt="Author"><span class="horizontal-gallery__item-title">Entitled as an Author</span></div>
+                <div class="horizontal-gallery__item"><img src="img/portfolio-04.jpg" alt="Mentor"><span class="horizontal-gallery__item-title">Leadership as Mentor</span></div>
+                <div class="horizontal-gallery__item"><img src="img/portfolio-05.jpeg" alt="Milestone"><span class="horizontal-gallery__item-title">First Milestone</span></div>
+                <div class="horizontal-gallery__item"><img src="img/portfolio-06.jpg" alt="Paradise"><span class="horizontal-gallery__item-title">Visiting Paradise</span></div>
+                <div class="horizontal-gallery__item"><img src="img/portfolio-07.jpg" alt="Teachers"><span class="horizontal-gallery__item-title">By Teachers</span></div>
+                <div class="horizontal-gallery__item"><img src="img/portfolio-08.jpeg" alt="Golden Feather"><span class="horizontal-gallery__item-title">Golden Feather</span></div>
+                <div class="horizontal-gallery__item"><img src="img/portfolio-09.JPEG" alt="Felicitation"><span class="horizontal-gallery__item-title">Master Felicitation Day</span></div>
+            </div>
+            <p class="horizontal-gallery__hint"><i class="fas fa-arrows-alt-h"></i> Scroll to explore</p>
+        </div>
+
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
@@ -331,6 +431,17 @@
         <!-- Back to Top -->
         <button class="back-to-top" aria-label="Back to top">
             <i class="fas fa-arrow-up"></i>
+        </button>
+
+        <!-- Color Theme Picker -->
+        <div class="theme-picker">
+            <button class="theme-picker__btn active" data-color="indigo" style="background:#6366f1" aria-label="Indigo theme"></button>
+            <button class="theme-picker__btn" data-color="rose" style="background:#e11d48" aria-label="Rose theme"></button>
+            <button class="theme-picker__btn" data-color="emerald" style="background:#059669" aria-label="Emerald theme"></button>
+            <button class="theme-picker__btn" data-color="amber" style="background:#d97706" aria-label="Amber theme"></button>
+        </div>
+        <button class="theme-picker__toggle" aria-label="Change color theme">
+            <i class="fas fa-palette"></i>
         </button>
 
         <script src="js/index.js"></script>
